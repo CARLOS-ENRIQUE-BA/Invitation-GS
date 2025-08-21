@@ -19,6 +19,62 @@
         visibility: hidden;
       }
     }
+
+    /* Animaciones flotantes y de movimiento */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      75% { transform: rotate(-2deg); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes slideInLeft {
+      0% { transform: translateX(-20px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      0% { transform: translateX(20px); opacity: 0; }
+      100% { transform: translateX(0); opacity: 1; }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .float-slow-animation {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    .wiggle-animation {
+      animation: wiggle 2s ease-in-out infinite;
+    }
+
+    .bounce-animation {
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .slide-left-animation {
+      animation: slideInLeft 1s ease-out forwards;
+    }
+
+    .slide-right-animation {
+      animation: slideInRight 1s ease-out forwards;
+    }
   </style>
 </head>
 <body class="flex flex-col items-center justify-center min-h-screen relative overflow-auto" style="background-image: url('./img/backgorund.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -37,39 +93,42 @@
             
             <!-- 1. Imágenes principales -->
             <div class="flex flex-row justify-center items-center space-x-4">
-                <div class="w-16 h-16">
+                <div class="w-16 h-16 float-animation">
                     <img src="./img/Img-top-left.svg" alt="Imagen 1" class="w-full h-full object-contain">
                 </div>
-                <div class="w-30 h-30">
+                <div class="w-30 h-30 bounce-animation">
                     <img src="./img/Img-top-center.svg" alt="Imagen 2" class="w-full h-full object-contain">
                 </div>
-                <div class="w-16 h-16">
+                <div class="w-16 h-16 float-animation" style="animation-delay: 1s;">
                     <img src="./img/Img-top-right.svg" alt="Imagen 3" class="w-full h-full object-contain">
                 </div>
             </div>
 
             <!-- 2. Nombre -->
             <div class="flex flex-col items-center space-y-2">
-                <div class="text-5xl font-bold" style="color: #FFB3DD; font-family: 'Yesteryear', cursive;">Grettell Sofía</div>
+                <div class="text-5xl font-bold" style="color: #FFB3DD; font-family: 'Yesteryear', cursive;">Grettell Sophia</div>
                 <div class="text-3xl font-semibold" style="color: #D4A3FB; font-family: 'Yesteryear', cursive;">Te invita a su fiesta</div>
             </div>
 
             <!-- 3. Edad -->
             <div class="flex flex-row items-center justify-center space-x-4">
-                <div class="w-14 h-14">
+                <div class="w-14 h-14 wiggle-animation">
                     <img src="./img/Img-age-left.svg" alt="Icono izquierda" class="w-full h-full object-contain">
                 </div>
-                <div class="flex flex-col items-center">
+                <div class="flex flex-col items-center bounce-animation" style="animation-delay: 0.5s;">
                     <div class="text-4xl font-bold text-pink-500" style="font-family: 'Molle', cursive;">5</div>
                     <div class="text-3xl text-pink-500" style="font-family: 'Leckerli One', cursive;">Años</div>
                 </div>
-                <div class="w-14 h-14">
+                <div class="w-14 h-14 wiggle-animation" style="animation-delay: 1s;">
                     <img src="./img/Img-age-right.svg" alt="Icono derecha" class="w-full h-full object-contain">
                 </div>
             </div>
 
             <!-- 4. Línea divisoria -->
             <div class="w-5/6 h-2 rounded-full" style="background: linear-gradient(90deg, #D3B8EB 0%, #FFB3DD 50%, #ACE8E8 100%);"></div>
+
+            <!-- 4.1. Hora del evento -->
+            <div class="text-4xl font-bold" style="color: #9F73AE; font-family: 'Molle', cursive;">4 PM</div>
 
             <!-- 5. Cita/Evento -->
             <div class="flex flex-row items-center justify-center space-x-8 w-full">
@@ -92,7 +151,7 @@
 
             <!-- 6. Confirmación WhatsApp -->
             <div class="flex flex-row items-center justify-center space-x-0">
-                <div class="w-25 h-25">
+                <div class="w-25 h-25 float-slow-animation">
                     <img src="./img/Img-left-buton.svg" alt="WhatsApp" class="w-full h-full object-contain">
                 </div>
                 <a href="https://wa.me/5219612253788?text=Confirmo%20mi%20asistencia%20para%20el%20evento%20de%20Grettell%2C%20mi%20nombre%20es%3A%5Binserte%20su%20nombre%5D" target="_blank" class="inline-block text-white px-0 py-2 rounded-lg cursor-pointer transition-colors"  style="background-color: #ACE8E8; color: #A78AF8;">
@@ -108,7 +167,7 @@
   <div class="mt-4 w-[90%] text-left py-4 relative">
     <div class="text-4xl font-bold" style="color: #FFB3DD; font-family: 'Molle', cursive;">¡Te espero!</div>
     <!-- Imagen esquina inferior derecha -->
-    <div class="absolute bottom-0 -right-5 w-40 h-40" style="z-index: 10;">
+    <div class="absolute bottom-0 -right-5 w-40 h-40 float-animation" style="z-index: 10; animation-delay: 2s;">
       <img src="./img/Img-right-bottom.svg" alt="Decoración" class="w-full h-full object-contain">
     </div>
   </div>
@@ -117,16 +176,22 @@
     window.addEventListener("load", () => {
       const intro = document.getElementById("intro");
       const card = document.getElementById("card");
+      const audio = new Audio('./vera.mp3');
 
       // esperar 2.5s y hacer fade-out de intro
       setTimeout(() => {
         intro.classList.add("fade-out");
         
-        // mostrar card con animación
+        // mostrar card con animación y reproducir audio
         setTimeout(() => {
           intro.style.display = "none";
           card.classList.remove("hidden");
-          card.classList.add("animate__fadeInUp"); 
+          card.classList.add("animate__fadeInUp");
+          
+          // reproducir audio después de mostrar la card
+          audio.play().catch(error => {
+            console.log('Error al reproducir audio:', error);
+          });
         }, 1500); // tiempo de fade-out 1500
       }, 2500); // tiempo que dura intro visible 2500
     });
